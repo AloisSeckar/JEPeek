@@ -29,5 +29,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: jepData } = await useFetch('/api/peek')
+import type { JEPData } from './server/api/peek'
+
+const { data: jepData } = await useFetch<JEPData>('/api/peek')
 </script>

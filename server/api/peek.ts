@@ -1,6 +1,12 @@
 import { parse } from 'node-html-parser'
 
-export default defineEventHandler(async () => {
+export type JEPData = {
+  fetched: Date,
+  lastJEP: number,
+  lastDraft: number,
+}
+
+export default defineEventHandler(async (): Promise<JEPData> => {
   // GET content from OpenJDK JEPs page
   const jepHTMLData = await $fetch<string>('https://openjdk.org/jeps/0')
   const jepPage = parse(jepHTMLData)
@@ -27,7 +33,7 @@ export default defineEventHandler(async () => {
   // return JSON data
   return {
     fetched: new Date(),
-    lastJEP: lastJEPNo,
-    lastDraft: lastDraftNo
+    lastJEP: parseInt(lastJEPNo || "-1"),
+    lastDraft: parseInt(lastDraftNo || "-1")
   }
 })
