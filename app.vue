@@ -23,7 +23,7 @@
       Output looks like <pre>{{ jepData }}</pre>
     </div>
     <div>
-      Visit <a href="https://github.com/AloisSeckar/JSPeek">https://github.com/AloisSeckar/JEPeek</a> for more info and contact
+      Visit <a href="https://github.com/AloisSeckar/JEPeek">https://github.com/AloisSeckar/JEPeek</a> for more info and contact
     </div>
   </div>
 </template>
