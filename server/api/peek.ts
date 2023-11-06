@@ -33,7 +33,7 @@ export default defineEventHandler(async (): Promise<JEPData> => {
   // return JSON data
   return {
     fetched: new Date(),
-    lastJEP: parseInt(lastJEPNo || "-1"),
-    lastDraft: parseInt(lastDraftNo || "-1")
+    lastJEP: parseInt(lastJEPNo || '-1'),
+    lastDraft: parseInt(lastDraftNo || '-1')
   }
 })
