@@ -16,4 +16,6 @@ Output comes in alike JSON structure:
 }
 ```
 
+If something went wrong during scraping data, the return value would be `-1`. Try again in a while.
+
 You're welcome to raise question, report a bug or suggest an improvement via [GitHub issues](https://github.com/AloisSeckar/JEPeek/issues)
