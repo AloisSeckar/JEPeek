@@ -9,6 +9,7 @@ export type JEPData = {
 export default defineEventHandler(async (): Promise<JEPData> => {
   // GET content from OpenJDK JEPs page
   const jepHTMLData = await $fetch<string>('https://openjdk.org/jeps/0')
+
   const jepPage = parse(jepHTMLData)
 
   // entries are listed in two <table class="jeps"> elements
@@ -22,13 +23,15 @@ export default defineEventHandler(async (): Promise<JEPData> => {
   const lastJEPRow = jepTable?.querySelectorAll('tr')?.at(-1)
   const lastDraftRow = draftTable?.querySelectorAll('tr')?.at(-1)
 
-  // the target number resides inside (the only one) <td class="jep"> element nested inside <tr>'s chlidren
+  // the target number resides inside (the only one) <td class="jep">
+  // element nested inside <tr>'s chlidren
   const lastJEPCell = lastJEPRow?.querySelector('.jep')
   const lastDraftCell = lastDraftRow?.querySelector('.jep')
 
   // finally the value is a sole TextNode inside <td> we just grabbed
-  const lastJEPNo = lastJEPCell?.childNodes[0]?.rawText
-  const lastDraftNo = lastDraftCell?.childNodes[0]?.rawText
+  // and we can access it directly via .text attribute
+  const lastJEPNo = lastJEPCell?.text
+  const lastDraftNo = lastDraftCell?.text
 
   // return JSON data
   return {
