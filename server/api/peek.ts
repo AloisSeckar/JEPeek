@@ -19,12 +19,12 @@ export default defineEventHandler(async (): Promise<JEPData> => {
   const draftTable = tables[1]
 
   // now we seek last <tr> of each table - here will be the latest entry
-  const lastJEPRow = jepTable?.childNodes.at(-1)
-  const lastDraftRow = draftTable?.childNodes.at(-1)
+  const lastJEPRow = jepTable?.querySelectorAll('tr')?.at(-1)
+  const lastDraftRow = draftTable?.querySelectorAll('tr')?.at(-1)
 
-  // the target number resides inside a <td class="jep"> element nested inside <tr> chlidren
-  const lastJEPCell = lastJEPRow?.childNodes.filter(node => node.rawAttrs === 'class="jep"')[0]
-  const lastDraftCell = lastDraftRow?.childNodes.filter(node => node.rawAttrs === 'class="jep"')[0]
+  // the target number resides inside (the only one) <td class="jep"> element nested inside <tr>'s chlidren
+  const lastJEPCell = lastJEPRow?.querySelector('.jep')
+  const lastDraftCell = lastDraftRow?.querySelector('.jep')
 
   // finally the value is a sole TextNode inside <td> we just grabbed
   const lastJEPNo = lastJEPCell?.childNodes[0]?.rawText
