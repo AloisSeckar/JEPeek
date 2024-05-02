@@ -1,9 +1,9 @@
 import { parse } from 'node-html-parser'
 
 export type JEPData = {
-  fetched: Date,
-  lastJEP: number,
-  lastDraft: number,
+  fetched: Date
+  lastJEP: number
+  lastDraft: number
 }
 
 export default defineEventHandler(async (): Promise<JEPData> => {
@@ -37,6 +37,6 @@ export default defineEventHandler(async (): Promise<JEPData> => {
   return {
     fetched: new Date(),
     lastJEP: parseInt(lastJEPNo || '-1'),
-    lastDraft: parseInt(lastDraftNo || '-1')
+    lastDraft: parseInt(lastDraftNo || '-1'),
   }
 })
