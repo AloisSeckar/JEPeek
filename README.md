@@ -3,6 +3,9 @@ Checks [OpenJDK JEP Index](https://openjdk.org/jeps/0) for last added **JEP** an
 
 The project is build in [Nuxt](https://nuxt.com/)
 
+### 👀 NOTE!!! 👀
+Due to recent changes of https://openjdk.org/jeps/0 website, the project is currently **not working** as intended. I will try to fix it ASAP.
+
 ### Usage
 Visit [http://jepeek.netlify.app](http://jepeek.netlify.app) or fetch [http://jepeek.netlify.app/api/peek](http://jepeek.netlify.app/api/peek) to get the lastest data
 
