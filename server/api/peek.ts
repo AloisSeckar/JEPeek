@@ -3,6 +3,7 @@ import { parse } from 'node-html-parser'
 export type JEPData = {
   fetched: Date
   lastJEP: number
+  lastSubmitted: number
   lastDraft: number
 }
 
@@ -30,8 +31,22 @@ export default defineEventHandler(async (): Promise<JEPData> => {
   const latestJEPNo = latestJEPCell?.text
 
   // third table contains "Submitted JEPs"
-  // - they passed the first level and are likely to be worked on, so we use this one
-  const draftTable = tables[2]
+  const submittedTable = tables[2]
+  // entries are not clearly ordered - we need to find correct row by going through all
+  let lastSubmittedNo = -1
+  const submittedTableRows = submittedTable?.querySelectorAll('tr')
+  submittedTableRows?.forEach((row) => {
+    // get current value
+    const submittedNoCell = row?.querySelector('.jep')
+    const submittedNo = submittedNoCell?.text
+    // if it is higher than previous max, set it
+    if (submittedNo && parseInt(submittedNo) > lastSubmittedNo) {
+      lastSubmittedNo = parseInt(submittedNo)
+    }
+  })
+
+  // fourth table contains "Draft JEPs"
+  const draftTable = tables[3]
   // entries are not clearly ordered - we need to find correct row by going through all
   let lastDraftNo = -1
   const draftTableRows = draftTable?.querySelectorAll('tr')
@@ -49,6 +64,7 @@ export default defineEventHandler(async (): Promise<JEPData> => {
   return {
     fetched: new Date(),
     lastJEP: parseInt(latestJEPNo || '-1'),
+    lastSubmitted: lastSubmittedNo,
     lastDraft: lastDraftNo,
   }
 })

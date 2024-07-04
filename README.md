@@ -1,5 +1,5 @@
 ## JEPeek
-Checks [OpenJDK JEP Index](https://openjdk.org/jeps/0) for last added **JEP** and **Draft**
+Checks [OpenJDK JEP Index](https://openjdk.org/jeps/0) for last added **JEP**, **Submitted** and **Draft** JEP.
 
 The project is build in [Nuxt](https://nuxt.com/)
 
@@ -10,9 +10,10 @@ Output comes in alike JSON structure:
 
 ```json
 {
-  "fetched": "2023-11-03T18:34:02.227Z",
-  "lastJEP": "463",
-  "lastDraft": "8318898"
+  "fetched": "2024-07-04T18:55:53.491Z",
+  "lastJEP": 482,
+  "lastSubmitted": 8326035,
+  "lastDraft": 8335368
 }
 ```
 

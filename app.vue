@@ -12,7 +12,11 @@
       <a :href="`https://openjdk.org/jeps/${jepData?.lastJEP}`">{{ jepData?.lastJEP }}</a>
     </div>
     <div>
-      Current last Draft:
+      Current last Submitted JEP:
+      <a :href="`https://openjdk.org/jeps/${jepData?.lastSubmitted}`">{{ jepData?.lastSubmitted }}</a>
+    </div>
+    <div>
+      Current last Draft JEP:
       <a :href="`https://openjdk.org/jeps/${jepData?.lastDraft}`">{{ jepData?.lastDraft }}</a>
     </div>
     <h2>Usage</h2>
